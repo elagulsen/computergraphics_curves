@@ -41,7 +41,7 @@ The file follows the following format:
 
 See the file script for an example of the file format
 """
-ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save' ]
+ARG_COMMANDS = [ 'line', 'scale', 'move', 'rotate', 'save', 'circle', 'bezier', 'hermite' ]
 
 def parse_file( fname, edges, transform, screen, color ):
 
@@ -101,4 +101,13 @@ def parse_file( fname, edges, transform, screen, color ):
             else:
                 save_extension(screen, args[0])
             
+        #def add_circle( points, cx, cy, cz, r, step ): 
+        
+        elif line == 'circle':
+            add_circle(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]))
+            
+        elif line == 'hermite':
+            add_hermite(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]), float(args[6]), float(args[7]))
+        elif line == 'bezier':
+            add_bezier(edges, float(args[0]), float(args[1]), float(args[2]), float(args[3]), float(args[4]), float(args[5]), float(args[6]), float(args[7]))
         c+= 1
